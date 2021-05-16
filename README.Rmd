@@ -1,0 +1,47 @@
+---
+title: "README"
+author: "John Little"
+date: "`r Sys.Date()`"
+abstract:  "\nstatus: developing\n"
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+status: developing  
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## A workshop case study on webscraping
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Using the `rvest` library to learn about web crawling and HTML parsing in R.
+
+- Introduce just enough HTML/CSS
+- Introduce the `library(rvest)` package for harvesting websites/HTML
+- Tidyverse iteration with `purrr::map`
+
+**Workshop Video**:  https://youtu.be/8ISc8V9GDAg
+
+**See Also**:  [_What to know about law & ethics when archiving & mining data_](slides/What to know about law & ethics_Archiving & Mining_15 Min_with notes.pdf) by Rachael Samberg, J.D., MLIS
+Timothy Vollmer, MIS & the UC Berkeley Office of Scholarly Communication Services youtube [playlists on navigating intellectual property, copyright, fair-use](https://www.youtube.com/channel/UCNUMwTyK0raTNNZVjhgB7KA/playlists).  **Please note**, the Samberg/Vollmer slides are found in this github repo's slides folder and are redistributed with permission from the slide authors.
+
+***
+
+
+## License
+John Little
+https://JohnLittle.info
+https://Rfun.library.duke.edu
+https://library.duke.edu/data
+
+### CC BY-NC
+Creative Commons Attribution-NonCommercial
+https://creativecommons.org/licenses/by-nc/4.0
