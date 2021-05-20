@@ -1,0 +1,76 @@
+---
+title: "My Web Scraping Exercise"
+author: "John Karuitha"
+date: "5/17/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE, include=FALSE)
+
+library(tidyverse)
+library(rvest)
+library(htmltools)
+tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+# Web Scraping Exercises
+
+In this website, there are names that span over 20 pages. Each page displays 50 names. The exercise is to scrap all the 20 pages. 
+
+```{r}
+results <- read_html("http://www.vondel.humanities.uva.nl/ecartico/persons/index.php?subtask=browse")
+
+results_scrap <- results %>% 
+  
+  html_nodes("#setwidth li a") %>% 
+  
+  html_text()
+```
+
+## Get the Attributes 
+These attributes are the web addresses of the 20 pages. 
+
+```{r}
+results_attr <- results %>% 
+  
+  html_nodes("#setwidth li a") %>% 
+  
+  html_attrs()
+```
+
+
+## Table of Names and Attributes
+This tibble consists of the 50 names and the 50 relative urls. 
+
+```{r}
+results_df <- tibble(results_scrap, results_attr)
+```
+
+## Updating the URLs
+These are the weblinks for the first 50 names. 
+
+```{r}
+results_to_crawl <- results_df %>% 
+  
+  mutate(full_url = glue::glue("http://www.vondel.humanities.uva.nl{results_attr}")) %>% 
+  
+  select(full_url)
+```
+
+## Crawling the rest of the navigation
+
+```{r}
+#######################################
+navigation <- results %>% 
+  
+  html_nodes("form+ .subnav a") %>% 
+  
+  html_attrs()
+
+navigation_tibble <- tibble(navigation)
+
+#######################################
+navigation_tibble
+```
+
